@@ -2,7 +2,7 @@
 
 > What do you need when the lights go dark?
 
-A bootstrap tool for caching development dependencies locally to enable offline development. When the internet goes down, continue hacking on new projects with pre-cached Docker images, Python packages (via uv), and Terraform providers.
+A bootstrap tool for caching development dependencies locally to enable offline development. When the internet goes down, continue hacking on new projects with pre-cached Docker images, development tools (via mise), Python packages (via uv), and Terraform providers.
 
 ## 🚀 Quick Start
 
@@ -29,7 +29,8 @@ offline status
 ## 📋 Features
 
 - **Docker Image Caching**: Pre-pull commonly used Docker images
-- **Python Environment Caching**: Install Python versions and packages via uv
+- **Development Tools (via mise)**: Unified management for Python, Node, Terraform, Go, and [hundreds more](https://mise.jdx.dev/registry.html)
+- **Python Environment Caching**: Install Python versions and packages via uv (alternative to mise)
 - **Terraform Provider Caching**: Download Terraform providers locally
 - **Periodic Updates**: Run `offline sync` periodically to keep caches fresh
 - **Configuration-Driven**: Simple YAML configuration for all dependencies
@@ -43,8 +44,9 @@ offline status
 
 ### Optional (for specific features)
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) - for Docker image caching
+- [mise](https://mise.jdx.dev) - for unified development tool management (recommended, auto-installed by bootstrap)
 - [uv](https://github.com/astral-sh/uv) - for Python version/package caching (auto-installed by bootstrap)
-- [Terraform](https://www.terraform.io/downloads) - for Terraform provider caching
+- [Terraform](https://www.terraform.io/downloads) - for Terraform provider caching (can be managed by mise)
 
 ## 📖 Usage
 
@@ -64,6 +66,7 @@ offline sync
 
 # Sync only specific types
 offline sync --no-docker           # Skip Docker images
+offline sync --no-mise             # Skip mise tools
 offline sync --no-python           # Skip Python packages
 offline sync --no-terraform        # Skip Terraform providers
 
@@ -93,7 +96,16 @@ docker:
     - "postgres:16"
     - "redis:7"
 
-# Python versions and packages to cache via uv
+# Development tools via mise (recommended)
+# mise manages Python, Node, Terraform, Go, and hundreds more
+mise:
+  tools:
+    - "python@3.12"
+    - "node@20"
+    - "terraform@1.9"
+    - "go@1.22"
+
+# Python versions and packages to cache via uv (alternative to mise for Python)
 python:
   # Python versions to install
   versions:
@@ -111,7 +123,7 @@ python:
   requirements_files:
     - "./requirements.txt"
 
-# Terraform providers to cache
+# Terraform providers to cache (alternative to managing terraform via mise)
 terraform:
   providers:
     - source: "hashicorp/aws"
@@ -119,6 +131,20 @@ terraform:
     - source: "hashicorp/google"
       version: "~> 5.0"
 ```
+
+### Why mise?
+
+[mise](https://mise.jdx.dev) is a unified development environment manager that:
+- **Manages hundreds of tools**: Python, Node, Terraform, Go, Ruby, Java, and more
+- **Offline-first design**: Tools are cached locally and work without internet
+- **Fast and efficient**: Written in Rust, faster than alternatives like asdf
+- **No shims**: Direct binaries, better performance
+- **Per-project versions**: Automatic tool switching with `.mise.toml` files
+
+**Recommended approach**: Use `mise` for tool management (Python, Node, Terraform, etc.) and `uv` for Python package dependencies. This gives you the best of both worlds:
+- mise handles runtime versions
+- uv handles Python packages
+- Docker handles container images
 
 ## 🔄 Periodic Updates
 

@@ -4,6 +4,14 @@ This directory contains example configuration files for common development scena
 
 ## Available Examples
 
+### `mise-unified.yaml` (⭐ Recommended)
+Unified tool management using mise for all development tools.
+- Python, Node, Terraform, Go, Rust, Ruby via mise
+- Docker images for services
+- Simplified configuration
+
+**Use case**: Modern development with unified tool management
+
 ### `python-minimal.yaml`
 Minimal Python development setup with essential tools.
 - Python 3.11 & 3.12

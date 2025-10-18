@@ -7,15 +7,20 @@ docker:
     - "amazon/aws-cli:latest"
     - "alpine:latest"
 
+# Use mise to manage infrastructure tools
+mise:
+  tools:
+    - "terraform@1.9"
+    - "python@3.12"
+    - "kubectl@latest"
+    - "helm@latest"
+    - "aws-vault@latest"
+
 python:
-  versions:
-    - "3.12"
+  versions: []
   
   packages:
     - "boto3"
-    - "azure-cli"
-    - "google-cloud-sdk"
-    - "ansible"
     - "pyyaml"
   
   requirements_files: []

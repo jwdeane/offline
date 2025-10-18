@@ -35,7 +35,23 @@ if ! command -v pip3 &> /dev/null; then
 fi
 echo "✓ pip3 detected"
 
-# Install uv if not present
+# Install mise if not present
+if ! command -v mise &> /dev/null; then
+    echo ""
+    echo "📦 Installing mise (development environment manager)..."
+    curl https://mise.run | sh
+    # Add to PATH for current session
+    export PATH="$HOME/.local/bin:$PATH"
+    echo "✓ mise installed"
+    echo ""
+    echo "⚠️  Note: You may need to add mise to your shell profile."
+    echo "   Run: echo 'eval \"\$(~/.local/bin/mise activate bash)\"' >> ~/.bashrc"
+    echo "   Or for zsh: echo 'eval \"\$(~/.local/bin/mise activate zsh)\"' >> ~/.zshrc"
+else
+    echo "✓ mise detected"
+fi
+
+# Install uv if not present (optional, as mise can handle Python too)
 if ! command -v uv &> /dev/null; then
     echo ""
     echo "📦 Installing uv (Python package manager)..."

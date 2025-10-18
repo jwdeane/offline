@@ -11,7 +11,20 @@ docker:
     - "redis:7"
     - "nginx:alpine"
 
-# Python versions and packages to cache via uv
+# Development tools via mise (recommended for unified tool management)
+# mise can manage Python, Node, Terraform, Go, and hundreds of other tools
+# See: https://mise.jdx.dev
+mise:
+  tools:
+    - "python@3.12"
+    - "python@3.11"
+    - "node@20"
+    - "terraform@1.9"
+    - "go@1.22"
+    # Add more tools as needed. Format: toolname@version
+    # Examples: ruby@3.3, java@21, rust@latest
+
+# Python versions and packages to cache via uv (alternative to mise for Python)
 python:
   # Python versions to install via uv
   versions:
@@ -38,7 +51,7 @@ python:
     # - "./requirements.txt"
     # - "./requirements-dev.txt"
 
-# Terraform providers to cache
+# Terraform providers to cache (alternative to managing terraform via mise)
 terraform:
   providers:
     - source: "hashicorp/aws"

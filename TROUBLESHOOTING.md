@@ -41,6 +41,40 @@ offline init
 - Ensure colons have a space after them
 - Validate with: `python3 -c "import yaml; yaml.safe_load(open('offline.yaml'))"`
 
+## Mise Issues
+
+### "mise not found"
+**Solution**: Install mise:
+```bash
+# Official installer (recommended)
+curl https://mise.run | sh
+
+# Or via Homebrew on macOS
+brew install mise
+
+# Add to shell profile
+echo 'eval "$(~/.local/bin/mise activate bash)"' >> ~/.bashrc
+# Or for zsh:
+echo 'eval "$(~/.local/bin/mise activate zsh)"' >> ~/.zshrc
+
+# Verify installation
+mise --version
+```
+
+### "mise install fails"
+**Solution**:
+- Check internet connection
+- Ensure sufficient disk space
+- Try installing tool manually: `mise install python@3.12`
+- Check mise doctor: `mise doctor`
+
+### Which tool manager should I use?
+**Answer**: 
+- **Recommended**: Use `mise` for runtime versions (Python, Node, Terraform, etc.) and `uv` for Python packages
+- **Alternative**: Use `uv` for Python and install other tools manually
+- `mise` advantages: unified management, hundreds of tools, offline-first design
+- You can use both or either depending on your needs
+
 ## Docker Issues
 
 ### "Docker not found"

@@ -35,11 +35,18 @@ class TerraformConfig:
 
 
 @dataclass
+class MiseConfig:
+    """Mise development tools configuration."""
+    tools: List[str]
+
+
+@dataclass
 class Config:
     """Main configuration."""
     docker: Optional[DockerConfig] = None
     python: Optional[PythonConfig] = None
     terraform: Optional[TerraformConfig] = None
+    mise: Optional[MiseConfig] = None
 
     @classmethod
     def load(cls, path: Path) -> "Config":
@@ -73,8 +80,15 @@ class Config:
                 )
             terraform_config = TerraformConfig(providers=providers)
 
+        mise_config = None
+        if "mise" in data and data["mise"]:
+            mise_config = MiseConfig(
+                tools=data["mise"].get("tools", [])
+            )
+
         return cls(
             docker=docker_config,
             python=python_config,
             terraform=terraform_config,
+            mise=mise_config,
         )

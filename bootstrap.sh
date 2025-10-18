@@ -84,7 +84,7 @@ echo ""
 echo "📦 Installing offline CLI tool..."
 
 # Install the offline tool using uv
-uv pip install -e .
+uv sync
 
 echo "✓ offline CLI tool installed"
 echo ""

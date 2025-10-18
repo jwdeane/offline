@@ -12,7 +12,7 @@ Thank you for your interest in contributing to the Offline development bootstrap
    ```
 3. Install in development mode:
    ```bash
-   uv pip install -e .
+   uv sync
    ```
 
 ## Development Setup
@@ -29,13 +29,15 @@ The easiest way to get started is using the provided devcontainer:
 If you prefer to develop locally:
 
 ```bash
-# Install the tool in editable mode using uv
-uv pip install -e .
+# Install the tool using uv
+uv sync
 
 # Or use mise tasks (recommended)
 mise run install
 
 # Install development dependencies with uv
+uv sync --extra dev
+# Or install tools separately
 uv pip install ruff black mypy
 ```
 

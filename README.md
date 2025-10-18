@@ -13,7 +13,7 @@ cd offline
 ./bootstrap.sh
 
 # Or manually install with uv
-uv pip install -e .
+uv sync
 
 # Create configuration
 offline init

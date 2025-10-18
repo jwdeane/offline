@@ -210,7 +210,7 @@ rm -rf ~/.offline/terraform
 
 # Reinstall offline tool
 uv pip uninstall offline
-uv pip install -e .
+uv sync
 
 # Start fresh
 offline init --force

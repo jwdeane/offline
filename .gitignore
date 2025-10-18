@@ -78,3 +78,6 @@ offline.yaml
 # Temporary files
 /tmp/
 *.tmp
+
+# Test scripts
+test-cli.sh

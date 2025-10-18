@@ -1,0 +1,64 @@
+# Offline Development Environment Configuration
+
+# Docker images to cache locally
+docker:
+  images:
+    - "python:3.11"
+    - "python:3.12"
+    - "node:20"
+    - "node:latest"
+    - "postgres:16"
+    - "redis:7"
+    - "nginx:alpine"
+
+# Development tools via mise (recommended for unified tool management)
+# mise can manage Python, Node, Terraform, Go, and hundreds of other tools
+# See: https://mise.jdx.dev
+mise:
+  tools:
+    - "python@3.12"
+    - "python@3.11"
+    - "node@20"
+    - "terraform@1.9"
+    - "go@1.22"
+    # Add more tools as needed. Format: toolname@version
+    # Examples: ruby@3.3, java@21, rust@latest
+
+# Python versions and packages to cache via uv (alternative to mise for Python)
+python:
+  # Python versions to install via uv
+  versions:
+    - "3.9"
+    - "3.10"
+    - "3.11"
+    - "3.12"
+  
+  # Common packages to cache
+  packages:
+    - "pytest"
+    - "black"
+    - "ruff"
+    - "mypy"
+    - "requests"
+    - "flask"
+    - "fastapi"
+    - "django"
+    - "numpy"
+    - "pandas"
+  
+  # Optional: requirements files to cache
+  requirements_files: []
+    # - "./requirements.txt"
+    # - "./requirements-dev.txt"
+
+# Terraform providers to cache (alternative to managing terraform via mise)
+terraform:
+  providers:
+    - source: "hashicorp/aws"
+      version: "~> 5.0"
+    - source: "hashicorp/azurerm"
+      version: "~> 3.0"
+    - source: "hashicorp/google"
+      version: "~> 5.0"
+    - source: "hashicorp/kubernetes"
+      version: "~> 2.0"

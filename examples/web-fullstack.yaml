@@ -1,0 +1,33 @@
+# Example: Full-Stack Web Development
+# Includes databases, web servers, and common frameworks
+
+docker:
+  images:
+    - "python:3.12"
+    - "node:20"
+    - "postgres:16"
+    - "redis:7"
+    - "nginx:alpine"
+    - "mongo:7"
+
+python:
+  versions:
+    - "3.11"
+    - "3.12"
+  
+  packages:
+    - "django"
+    - "fastapi"
+    - "flask"
+    - "celery"
+    - "pytest"
+    - "black"
+    - "ruff"
+    - "sqlalchemy"
+    - "psycopg2-binary"
+    - "redis"
+  
+  requirements_files: []
+
+terraform:
+  providers: []

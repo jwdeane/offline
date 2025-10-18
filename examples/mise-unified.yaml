@@ -1,0 +1,30 @@
+# Example: Using mise for unified tool management
+# This is the recommended approach for managing development tools
+
+docker:
+  images:
+    - "postgres:16"
+    - "redis:7"
+    - "nginx:alpine"
+
+# Use mise to manage all development tools (Python, Node, Terraform, etc.)
+# mise provides unified, fast, and offline-friendly tool management
+mise:
+  tools:
+    - "python@3.12"
+    - "python@3.11"
+    - "node@20"
+    - "node@18"
+    - "terraform@1.9"
+    - "go@1.22"
+    - "rust@latest"
+    - "ruby@3.3"
+
+# You can still use uv for Python packages if needed
+python:
+  versions: []
+  packages: []
+  requirements_files: []
+
+terraform:
+  providers: []

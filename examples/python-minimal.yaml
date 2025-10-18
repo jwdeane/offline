@@ -1,0 +1,24 @@
+# Example: Minimal Python Development Environment
+# Perfect for quick Python projects
+
+docker:
+  images:
+    - "python:3.12"
+    - "python:3.11"
+
+python:
+  versions:
+    - "3.11"
+    - "3.12"
+  
+  packages:
+    - "pytest"
+    - "black"
+    - "ruff"
+    - "requests"
+    - "click"
+  
+  requirements_files: []
+
+terraform:
+  providers: []

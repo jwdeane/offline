@@ -1,0 +1,39 @@
+# Example: Cloud Infrastructure Development
+# For DevOps and Infrastructure as Code work
+
+docker:
+  images:
+    - "hashicorp/terraform:latest"
+    - "amazon/aws-cli:latest"
+    - "alpine:latest"
+
+# Use mise to manage infrastructure tools
+mise:
+  tools:
+    - "terraform@1.9"
+    - "python@3.12"
+    - "kubectl@latest"
+    - "helm@latest"
+    - "aws-vault@latest"
+
+python:
+  versions: []
+  
+  packages:
+    - "boto3"
+    - "pyyaml"
+  
+  requirements_files: []
+
+terraform:
+  providers:
+    - source: "hashicorp/aws"
+      version: "~> 5.0"
+    - source: "hashicorp/azurerm"
+      version: "~> 3.0"
+    - source: "hashicorp/google"
+      version: "~> 5.0"
+    - source: "hashicorp/kubernetes"
+      version: "~> 2.0"
+    - source: "hashicorp/helm"
+      version: "~> 2.0"

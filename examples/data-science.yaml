@@ -1,0 +1,31 @@
+# Example: Data Science Environment
+# For machine learning and data analysis work
+
+docker:
+  images:
+    - "python:3.12"
+    - "jupyter/datascience-notebook:latest"
+    - "postgres:16"
+
+python:
+  versions:
+    - "3.11"
+    - "3.12"
+  
+  packages:
+    - "numpy"
+    - "pandas"
+    - "scikit-learn"
+    - "matplotlib"
+    - "seaborn"
+    - "jupyter"
+    - "jupyterlab"
+    - "tensorflow"
+    - "torch"
+    - "pytest"
+    - "black"
+  
+  requirements_files: []
+
+terraform:
+  providers: []

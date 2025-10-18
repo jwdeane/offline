@@ -14,7 +14,7 @@
       ]
     }
   },
-  "postCreateCommand": "pip install -e .",
+  "postCreateCommand": "pip install uv && uv pip install -e .",
   "remoteUser": "vscode",
   "mounts": [
     "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"

@@ -163,6 +163,23 @@ EOF
 chmod +x update-cache.sh
 ```
 
+## 🛠️ Development Tasks
+
+This project uses mise for task management. Available tasks:
+
+```bash
+# Show all available tasks
+mise tasks
+
+# Common tasks
+mise run install    # Install the offline tool
+mise run lint       # Run linters
+mise run clean      # Remove build artifacts
+mise run bootstrap  # Run the bootstrap script
+```
+
+All tasks are defined in `.mise.toml`. See [mise tasks documentation](https://mise.jdx.dev/tasks/) for more information.
+
 ## 🐳 Development Container
 
 This repository includes a devcontainer configuration for testing. While the target OS is macOS, the devcontainer provides a consistent Linux environment for development and testing.

@@ -1,0 +1,46 @@
+# mise configuration for offline development tool
+# See: https://mise.jdx.dev/tasks/
+
+[tasks.install]
+description = "Install the offline tool"
+run = "pip install -e ."
+
+[tasks.dev]
+description = "Install in development mode with dev dependencies"
+run = "pip install -e '.[dev]'"
+
+[tasks.test]
+description = "Run tests (if available)"
+run = "echo 'No tests configured yet'"
+
+[tasks.lint]
+description = "Run linters"
+run = """
+if command -v ruff >/dev/null 2>&1; then
+    ruff check offline/
+else
+    echo "ruff not installed, skipping"
+fi
+if command -v black >/dev/null 2>&1; then
+    black --check offline/
+else
+    echo "black not installed, skipping"
+fi
+"""
+
+[tasks.clean]
+description = "Remove build artifacts"
+run = """
+rm -rf build/ dist/ *.egg-info
+find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
+find . -type f -name "*.pyc" -delete
+"""
+
+[tasks.bootstrap]
+description = "Run the bootstrap script"
+run = "./bootstrap.sh"
+
+[tasks.help]
+description = "Show available tasks"
+alias = "h"
+run = "mise tasks"

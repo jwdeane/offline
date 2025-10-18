@@ -32,8 +32,25 @@ If you prefer to develop locally:
 # Install the tool in editable mode
 pip install -e .
 
+# Or use mise tasks
+mise run install
+
 # Install development dependencies
 pip install ruff black mypy
+```
+
+### Using mise Tasks
+This project uses mise for task automation. View available tasks:
+
+```bash
+# List all tasks
+mise tasks
+
+# Run common tasks
+mise run install    # Install the tool
+mise run lint       # Run linters
+mise run clean      # Clean build artifacts
+mise run bootstrap  # Run bootstrap script
 ```
 
 ## Making Changes
@@ -70,7 +87,7 @@ pip install ruff black mypy
 
 Run linters before committing:
 ```bash
-make lint
+mise run lint
 ```
 
 ## Testing

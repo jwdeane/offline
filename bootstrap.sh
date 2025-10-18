@@ -28,13 +28,6 @@ fi
 PYTHON_VERSION=$(python3 --version | cut -d' ' -f2 | cut -d'.' -f1,2)
 echo "✓ Python $PYTHON_VERSION detected"
 
-# Check pip
-if ! command -v pip3 &> /dev/null; then
-    echo "❌ pip3 is not installed. Please install pip."
-    exit 1
-fi
-echo "✓ pip3 detected"
-
 # Install mise if not present
 if ! command -v mise &> /dev/null; then
     echo ""
@@ -51,7 +44,7 @@ else
     echo "✓ mise detected"
 fi
 
-# Install uv if not present (optional, as mise can handle Python too)
+# Install uv if not present (required for Python package management)
 if ! command -v uv &> /dev/null; then
     echo ""
     echo "📦 Installing uv (Python package manager)..."
@@ -64,6 +57,8 @@ if ! command -v uv &> /dev/null; then
     else
         curl -LsSf https://astral.sh/uv/install.sh | sh
     fi
+    # Add to PATH for current session
+    export PATH="$HOME/.local/bin:$PATH"
     echo "✓ uv installed"
 else
     echo "✓ uv detected"
@@ -88,8 +83,8 @@ fi
 echo ""
 echo "📦 Installing offline CLI tool..."
 
-# Install the offline tool
-pip3 install -e .
+# Install the offline tool using uv
+uv pip install -e .
 
 echo "✓ offline CLI tool installed"
 echo ""

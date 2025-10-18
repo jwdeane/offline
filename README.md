@@ -12,8 +12,8 @@ git clone https://github.com/jwdeane/offline.git
 cd offline
 ./bootstrap.sh
 
-# Or manually install
-pip install -e .
+# Or manually install with uv
+uv pip install -e .
 
 # Create configuration
 offline init
@@ -40,12 +40,11 @@ offline status
 
 ### Required
 - Python 3.9 or later
-- pip
+- [uv](https://github.com/astral-sh/uv) - Python package manager (auto-installed by bootstrap)
 
 ### Optional (for specific features)
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) - for Docker image caching
 - [mise](https://mise.jdx.dev) - for unified development tool management (recommended, auto-installed by bootstrap)
-- [uv](https://github.com/astral-sh/uv) - for Python version/package caching (auto-installed by bootstrap)
 - [Terraform](https://www.terraform.io/downloads) - for Terraform provider caching (can be managed by mise)
 
 ## 📖 Usage

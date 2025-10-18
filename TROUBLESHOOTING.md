@@ -4,17 +4,17 @@ Common issues and solutions when using the offline development bootstrap tool.
 
 ## Installation Issues
 
-### "pip: command not found"
-**Solution**: Install pip3:
+### "uv: command not found"
+**Solution**: Install uv:
 ```bash
-# macOS
-brew install python3
+# Official installer (recommended)
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# Ubuntu/Debian
-sudo apt-get install python3-pip
+# Or via Homebrew on macOS
+brew install uv
 
 # Check installation
-pip3 --version
+uv --version
 ```
 
 ### "offline: command not found" after installation
@@ -209,8 +209,8 @@ uv cache clean
 rm -rf ~/.offline/terraform
 
 # Reinstall offline tool
-pip3 uninstall offline
-pip3 install -e .
+uv pip uninstall offline
+uv pip install -e .
 
 # Start fresh
 offline init --force

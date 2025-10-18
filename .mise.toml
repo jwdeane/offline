@@ -3,11 +3,11 @@
 
 [tasks.install]
 description = "Install the offline tool"
-run = "pip install -e ."
+run = "uv pip install -e ."
 
 [tasks.dev]
 description = "Install in development mode with dev dependencies"
-run = "pip install -e '.[dev]'"
+run = "uv pip install -e '.[dev]'"
 
 [tasks.test]
 description = "Run tests (if available)"
